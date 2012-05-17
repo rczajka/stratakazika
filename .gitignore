@@ -1,0 +1,39 @@
+localsettings.py
+dev.sqlite
+*.db
+*.db-journal
+*~
+*.orig
+*.log
+
+# static and media
+/_dynamic
+
+# Python garbage
+*.pyc
+.coverage
+pip-log.txt
+nosetests.xml
+
+# Mac OS X garbage
+.DS_Store
+
+# Windows garbage
+thumbs.db
+
+# Eclipse
+.project
+.settings
+.pydevproject
+.tmp_*
+
+# Tags file
+TAGS
+
+media
+search_index
+
+# Celery garbage
+/celerybeat-schedule
+/celerybeat.pid
+

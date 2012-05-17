@@ -1,0 +1,196 @@
+$strong: #BF2836;
+$verylight: #D9D6D4;
+$light: #A3988E;
+$medium: #505246;
+$dark: #222E2B;
+$verydark: #0F1C1F;
+$header: 3em;
+$headertop: .25em;
+
+@import url(http://fonts.googleapis.com/css?family=Magra&subset=latin,latin-ext);
+
+
+.cl {
+	clear: both;
+}
+
+html {
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Magra;
+	background-color: $dark;
+	color: $light;
+}
+.cl {
+	clear: both;
+}
+a {
+	text-decoration: none;
+	color: $strong;
+}
+a img {
+	border: 0;
+}
+
+
+#content-wrapper {
+	background-color: white;
+	color: $verydark;
+	padding-bottom: 5em;
+	min-height: 20em;
+}
+#content, #footer {
+	max-width: 64em;
+	margin: auto;
+}
+
+#content {
+	padding: 0 0 1em 0;
+}
+
+#content p {
+    margin-top: 0;
+}
+h1 {
+	font-weight: normal;
+	font-size: 3em;
+    margin-bottom: 0;
+}
+h2 {
+	font-weight: normal;
+	font-size: 1.5em;
+}
+h3 {
+  font-weight: normal;
+  font-size: 1.2em;
+  margin: .7em 0 0em 0;
+}
+
+.increase {
+    display: inline;
+}
+
+.increase button {
+	color: white;
+}
+
+.increase button {
+    background: $light;
+    border-radius: .3em;
+    border-width: 0px;
+    font-family: Magra;
+}
+
+.increase button:hover {
+	background: $strong; /* Old browsers */
+}
+
+
+
+
+footer {
+	clear: both;
+	padding:1em;
+	text-align: right;
+	position:relative;
+	z-index:1;
+	box-shadow: 0 -.4em .3em $light;
+
+	p {
+		font-size: .8em;
+	}
+	a {
+		color: white;
+	}
+}
+
+
+ul.blinken {
+	list-style:none;
+	margin: 0;
+	padding: 0;
+    li {
+        margin-bottom: 1em;
+        .comment {
+            display: block;
+            color: $light;
+            font-size: .9em;
+        }
+    }
+}
+
+
+#search-area {
+margin: 2.5em 0;
+}
+.search {
+    input {
+        border:  1px solid $light;
+        border-radius: .3em;
+        font-family: Magra;
+    }
+    input, button {
+        font-size: 1.5em;
+        padding: .5em;
+    }
+}
+
+
+
+#left-column {
+  min-width: 50%;
+  max-width: 40em;
+  float:left;
+  margin: 0 .5em;
+}
+#right-column {
+  float: right;
+  margin-top: -1em;
+  padding: 1em 0 1em 1em;
+  border-left: 1px solid #ddd;
+  width: 21em;
+}
+
+.uwaga {
+  padding: 1em;
+  box-shadow: 0 0 1em $verylight;
+  margin: 1em;
+  background: #f2efed;
+}
+
+
+.the_money {
+    display: inline-block;
+    font-size: 3em;
+    color: $strong;
+    text-shadow: 0 0 .25em #faa;
+    margin-left: .5em;
+    vertical-align: -10%;
+    
+}
+.the_count {
+    margin-left: 1em;
+    font-size: 1.5em;
+}
+#top-comment {
+    color: $light;
+    font-size: .9em;
+}
+
+#last-incs {
+    width: 19em;
+    float:right;
+}
+#popular-counters {
+    width: 19em;
+    float:left;
+}
+
+.share {
+    position: absolute;
+    margin-left: .3em;
+}

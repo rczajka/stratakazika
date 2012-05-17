@@ -1,0 +1,11 @@
+{% load url from future %}
+{% load honeypot %}
+
+<form class="increase" method='post' action="{% url 'increase' %}">
+    {% csrf_token %}
+    {% render_honeypot_field %}
+    {{ prefix }}
+    {{ counter.name }}
+    <input type="hidden" name="counter_name" value="{{ counter.name }}" />
+    <button>Ja też!</button>
+</form>

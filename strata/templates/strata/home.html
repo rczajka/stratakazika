@@ -1,0 +1,106 @@
+{% extends "site_base.html" %}
+{% load url from future %}
+{% load pluralize_pl %}
+{% load honeypot %}
+{% load strata_tags %}
+
+{% block full_title %}Strata Kazika{% endblock %}
+
+
+{% block description %}
+{% if linked %}
+
+Powiększam Stratę Kazika, kopiując płytę „{{ linked.name }}”. Dorzuć się i Ty!
+
+{% else %}
+
+Uznaliśmy, że to najprostszy sposób, żeby kogoś ograbić na dużą kasę.
+Wystarczy, że będziemy w kółko kopiować muzykę (w tym przypadku płytę
+„Hurra” Kultu – {{ the_counter.price }}&nbsp;zł za sztukę w sklepie SP Records),
+a strata Kazika szybko osiągnie takie rozmiary, że po podziale
+łupu wszyscy zostaniemy bogaczami.
+
+{% endif %}
+{% endblock %}
+
+
+{% block leftcolumn %}
+
+<h1>Strata Kazika</h1>
+
+<p class="the_counter">wynosi obecnie:
+<span class="the_money">{{ sum_counter.money }} zł</span>
+<span class="the_count">({{ sum_counter.count }} {{ sum_counter.count|pluralize_pl:"kopię,kopii,kopie" }})</span>
+</p>
+
+
+
+
+    <div id="search-area">
+    <h2>Dołóż się do straty!</h2>
+    <p>Wykonaj kopię płyty, którą akurat masz pod ręką i dolicz ją
+    do strat artystów – a na koniec podziel się tą wiadomością ze znajomymi.</p>
+    <form class="search increase" method='post' action="{% url 'increase' %}">
+        {% csrf_token %}
+        {% render_honeypot_field %}
+        <input id="search" type="text" placeholder="Wykonawca – Tytuł płyty" name="counter_name" />
+        <button>Dolicz stratę</button>
+    </form>
+    </div>
+
+    <div id="last-incs">
+    <h2>Ostatnio doliczone</h2>
+    <ul class="blinken">
+    {% for inc in last_incs %}
+        <li>{% inc_form inc.counter %}
+            <span class="comment">{{ inc.money }} zł, {{ inc.date }}</span>
+            
+        </li>
+    {% endfor %}
+    </ul>
+    </div>
+
+    <div id="popular-counters">
+    <h2>Najwyższe straty</h2>
+    <ul class="blinken">
+    {% for counter in popular_counters %}
+        <li>{% inc_form counter %}
+            <span class="comment">
+            {{ counter.count }} {{ counter.count|pluralize_pl:"kopia,kopii,kopie" }},
+            {{ counter.money }} zł</span>
+        </li>
+    {% endfor %}
+    </ul>
+    </div>
+{% endblock %}
+
+{% block rightcolumn %}
+<h2>O co chodzi?</h2>
+<p><strong>Pamiętaj, kopiowanie to kradzież!</strong></p>
+<p>Za każdym razem, kiedy kopiujesz płytę swojego ulubionego artysty,
+pozbawiasz go części należnego mu dochodu. Wielkość tej straty można
+łatwo określić, mnożąc liczbę wykonanych kopii przez cenę detaliczną płyty.
+Nasz sprytny plan polega na automatycznym robieniu kolejnych kopii albumu „Hurra”.
+Kiedy kończy nam się miejsce na dysku,
+po prostu usuwamy stare kopie, by zrobić miejsce na następne.</p>
+
+<p>Uznaliśmy, że to najprostszy sposób, żeby kogoś ograbić na dużą kasę.
+Wystarczy, że będziemy w kółko kopiować muzykę (w tym przypadku płytę
+„Hurra” Kultu – {{ the_counter.price }}&nbsp;zł za sztukę w sklepie SP Records),
+a <strong>strata Kazika</strong> szybko osiągnie takie rozmiary, że po podziale
+łupu wszyscy zostaniemy bogaczami.</p>
+
+<p>Na wypadek, gdyby ktoś pytał: wykonanych przez nas kopii nie udostępniamy
+w internecie, bo za bardzo boimy się wizyty policji. Jesteśmy pazerni, ale nie odważni.</p>
+
+<p><strong>Możesz nam pomóc!</strong> Wystarczy, że doliczysz swoją kopię dowolnej płyty
+do generowanych przez nas strat – nikt też nie powiedział, że musimy być
+zawzięci tylko na Kazika. Cenę jednej płyty domyślnie szacujemy na {{ DEFAULT_PRICE }}&nbsp;zł.
+Zdajemy sobie sprawę, że płyty czasem bywają droższe – w takim przypadku strata
+ponoszona przez artystów będzie oczywiście również odpowiednio większa, niż by
+na to wskazywały nasze szacunki.</p>
+
+{% endblock %}
+
+{% block bodyextra %}
+{% endblock %}

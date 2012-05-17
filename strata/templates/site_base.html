@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+{% load url from future %}
+{% load compressed static %}
+<head>
+    <meta charset="utf-8">
+    <title>{% block full_title %}Strata Kazika :: {% block head_title %}{% endblock %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <meta name="author" content="Radek Czajka" />
+    {% compressed_css "all" %}
+</head>
+
+<body>
+<div id="content-wrapper"><div id="content">
+
+
+
+
+{% block body %}
+<section id="left-column">
+    {% block leftcolumn %}{% endblock %}
+</section><section id="right-column">
+    {% block rightcolumn %}{% endblock %}
+</section>
+{% endblock %}
+
+
+<div class="cl"></div>
+</div></div>
+
+
+
+<footer><div id="footer">
+	<p>Autor: Radek Czajka (na gmail.com).</p>
+</div></footer>
+
+<span id="share-stub" class="share" style="display:none">
+    <a class="facebook"><img alt="Pochwal się na Facebooku" src="{% static 'img/social/facebook.png' %}"></a>
+    <a class="google"><img alt="Pochwal się na Google Plus" src="{% static 'img/social/google.png' %}"></a>
+    <a class="diaspora"><img alt="Pochwal się na Diasporze" src="{% static 'img/social/diaspora.png' %}"></a>
+    <a class="twitter"><img alt="Pochwal się na Twitterze" src="{% static 'img/social/twitter.png' %}"></a>
+    <a class="blip"><img alt="Pochwal się na Blipie" src="{% static 'img/social/blip.png' %}"></a>
+    <a class="nk"><img alt="Pochwal się na NK" src="{% static 'img/social/nk.png' %}"></a>
+</span>
+
+{% compressed_js "all" %}
+{% block bodyextra %}
+{% endblock %}
+
+{% autoescape off %}
+{{ piwik_tag }}
+{% endautoescape %} 
+
+</body>
+
+</html>
