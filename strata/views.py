@@ -3,12 +3,14 @@ import json
 import re
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
+from django.views.decorators.cache import cache_control
 from django.views.decorators.http import require_POST
 from pluralize_pl.templatetags.pluralize_pl import pluralize_pl
 from strata import api
 from strata.templatetags.strata_tags import money
 
 
+@cache_control(no_cache=True)
 def home(request):
     return render(request, "strata/home.html", {
             "last_incs": api.last_incs(),
@@ -19,6 +21,7 @@ def home(request):
         })
 
 
+@cache_control(no_cache=True)
 def hint(request):
     result = [counter.name 
         for counter in api.search_counter(request.GET.get('term', ''))[:10]]
@@ -37,6 +40,7 @@ def increase(request):
         return  redirect('/')
 
 
+@cache_control(no_cache=True)
 def update(request):
     sum_counter = api.sum_counter()
     result = {

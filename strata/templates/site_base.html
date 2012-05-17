@@ -34,21 +34,10 @@
 	<p>Autor: Radek Czajka (na gmail.com).</p>
 </div></footer>
 
-<div id="share-stub" style="display:none">
-    <a class="close">x</a>
-    <p>Dzięki!<br>
-    Pochwal się znajomym:<br></p>
-    <a class="diaspora" target="_blank" rel="nofollow"><img alt="Pochwal się na Diasporze" src="{% static 'social/diaspora.png' %}"></a>
-    <a class="twitter" target="_blank" rel="nofollow"><img alt="Pochwal się na Twitterze" src="{% static 'social/twitter.png' %}"></a>
-    <a class="blip" target="_blank" rel="nofollow"><img alt="Pochwal się na Blipie" src="{% static 'social/blip.png' %}"></a>
-    <a class="facebook" target="_blank" rel="nofollow"><img alt="Pochwal się na Facebooku" src="{% static 'social/facebook.png' %}"></a>
-    <a class="google" target="_blank" rel="nofollow"><img alt="Pochwal się na Google Plus" src="{% static 'social/google.png' %}"></a>
-    <a class="nk" target="_blank" rel="nofollow"><img alt="Pochwal się na NK" src="{% static 'social/nk.png' %}"></a>
-</div>
 
-{% compressed_js "all" %}
 {% block bodyextra %}
 {% endblock %}
+{% compressed_js "all" %}
 
 {% autoescape off %}
 {{ piwik_tag }}

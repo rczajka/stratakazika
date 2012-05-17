@@ -12,7 +12,6 @@ def search_counter(prefix):
 
 
 def counter_by_name(name):
-    print name
     try:
         return Counter.objects.get(name=name)
     except Counter.DoesNotExist:
