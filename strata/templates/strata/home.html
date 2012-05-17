@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load static %}
 {% load url from future %}
 {% load pluralize_pl %}
 {% load honeypot %}
@@ -29,7 +30,7 @@ a strata Kazika szybko osiągnie takie rozmiary, że po podziale
 <h1>Strata Kazika</h1>
 
 <p id="the_counter">wynosi obecnie:
-<span id="the_money">{{ sum_counter.money }} zł</span>
+<span id="the_money">{{ sum_counter.money|money }}</span>
 <span id="the_count">({{ sum_counter.count }} {{ sum_counter.count|pluralize_pl:"kopię,kopii,kopie" }})</span>
 </p>
 
@@ -81,6 +82,7 @@ a strata Kazika szybko osiągnie takie rozmiary, że po podziale
 pozbawiasz go części należnego mu dochodu. Wielkość tej straty można
 łatwo określić, mnożąc liczbę wykonanych kopii przez cenę detaliczną płyty.
 Nasz sprytny plan polega na automatycznym robieniu kolejnych kopii albumu „Hurra”.
+<img id="taping" src="/static/strata/taping.png" alt="Logo kampanii „Home taping is killing music and it's illegal”">
 Kiedy kończy nam się miejsce na dysku,
 po prostu usuwamy stare kopie, by zrobić miejsce na następne.</p>
 

@@ -24,10 +24,11 @@ $(function() {
         var description = "Powiększam Stratę Kazika, kopiując płytę „" +
                 name + "”. Dorzuć się i Ty!"
         var blip = encodeURIComponent(description + " #StrataKazika http://stratakazika.pl");
+        var diaspora = encodeURIComponent(description + " #StrataKazika");
         var description = encodeURIComponent(description);
 
         var $form = $(this);
-        $('.share', $form).remove();
+        $('.share').hide("fast", function() {$(this).remove()});
         var $button = $('button', this);
         $button.html("...");
         $(this).ajaxSubmit({
@@ -36,13 +37,14 @@ $(function() {
                 update_counts_from_text(text);
                 var $share = $('#share-stub').clone();
                 $share.removeAttr('id');
+                $share.addClass('share');
 
                 $('.facebook', $share).attr('href',
                     'https://www.facebook.com/sharer.php?u=' + here_url);
                 $('.google', $share).attr('href',
                     'https://plus.google.com/share?url=' + here_url);
                 $('.diaspora', $share).attr('href',
-                    'http://sharetodiaspora.github.com/?title=' + description +
+                    'http://sharetodiaspora.github.com/?title=' + diaspora +
                     '&url=' + base_url);
                 $('.twitter', $share).attr('href',
                     'https://twitter.com/intent/tweet?url='+ base_url +
@@ -63,6 +65,10 @@ $(function() {
     $("#search").autocomplete({
         source: '/hint',
         minLength: 1,
+    });
+
+    $(".share .close").live("click", function() {
+        $('.share').hide("fast", function() {$(this).remove()});
     });
 
 });

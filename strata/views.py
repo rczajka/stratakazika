@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from pluralize_pl.templatetags.pluralize_pl import pluralize_pl
 from strata import api
+from strata.templatetags.strata_tags import money
 
 
 def home(request):
@@ -43,6 +44,6 @@ def update(request):
                 sum_counter['count'],
                 pluralize_pl(sum_counter['count'], u"kopię,kopii,kopie")
             ),
-        "the_money": u"%s zł" % str(sum_counter['money']).replace('.', ','),
+        "the_money": money(sum_counter['money']),
     }
     return HttpResponse(json.dumps(result), mimetype="application/json")

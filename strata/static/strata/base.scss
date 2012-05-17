@@ -7,7 +7,7 @@ $verydark: #0F1C1F;
 $header: 3em;
 $headertop: .25em;
 
-@import url(http://fonts.googleapis.com/css?family=Magra&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Magra|Bangers&subset=latin,latin-ext);
 
 
 .cl {
@@ -18,10 +18,18 @@ html {
 	margin: 0;
 	padding: 0;
 }
+
+h1, #the_money {
+    font-family: 'Bangers';
+}
+body, input, button {
+    font-family: Magra;
+    font-size: .9em;
+}
+
 body {
 	margin: 0;
 	padding: 0;
-	font-family: Magra;
 	background-color: $dark;
 	color: $light;
 }
@@ -57,7 +65,7 @@ a img {
 }
 h1 {
 	font-weight: normal;
-	font-size: 3em;
+	font-size: 4em;
     margin-bottom: 0;
 }
 h2 {
@@ -82,7 +90,6 @@ h3 {
     background: $light;
     border-radius: .3em;
     border-width: 0px;
-    font-family: Magra;
 }
 
 .increase button:hover {
@@ -131,7 +138,6 @@ margin: 2.5em 0;
     input {
         border:  1px solid $light;
         border-radius: .3em;
-        font-family: Magra;
     }
     input, button {
         font-size: 1.5em;
@@ -191,9 +197,35 @@ margin: 2.5em 0;
 }
 
 .share {
+    display: inline;
     position: absolute;
     margin-left: .3em;
     background: $verylight;
-    padding: .5em;
+    padding: .7em;
     border-radius: .3em;
+    box-shadow: 0 0 1em $verylight;
+
+    img {
+        margin-right: .1em;
+    }
+
+    .close {
+        display: block;
+        float: right;
+        cursor: pointer;
+        padding: 0 .5em .3em;
+        position: relative;
+        right: -.3em;
+        top: -.3em;
+
+        background: $light;
+        border-radius: .3em;
+        border-width: 0px;
+        color: white;
+    }
+}
+
+#taping {
+    float: right;
+    margin: 1em -30px 1em 1em;
 }
