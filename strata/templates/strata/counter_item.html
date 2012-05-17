@@ -1,0 +1,10 @@
+{% load inc_form money from strata_tags %}
+{% load pluralize_pl %}
+
+{% inc_form counter %}
+<span class="comment">
+{{ count }} {{ count|pluralize_pl:"kopia,kopii,kopie" }},
+{{ money|money }}</span>
+{% if inc %}
+    <span class="comment">+{{ inc.money|money }}, {{ inc.date }}</span>
+{% endif %}

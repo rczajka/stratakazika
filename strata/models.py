@@ -7,8 +7,16 @@ class Counter(models.Model):
     count = models.IntegerField(default=0, db_index=True)
     money = models.DecimalField(max_digits=32, decimal_places=2, default=0, db_index=True)
 
+    class Meta:
+        ordering = ['name']
+
+    def __unicode__(self):
+        return self.name
+
 
 class CounterInc(models.Model):
     counter = models.ForeignKey(Counter)
     money = models.DecimalField(max_digits=7, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)
+    total_count = models.IntegerField()
+    total_money = models.DecimalField(max_digits=32, decimal_places=2)

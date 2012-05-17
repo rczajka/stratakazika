@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 import re
+from django.contrib.humanize.templatetags.humanize import intcomma
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.cache import cache_control
@@ -44,9 +45,9 @@ def increase(request):
 def update(request):
     sum_counter = api.sum_counter()
     result = {
-        "the_count": u"(%d %s)" % (
-                sum_counter['count'],
-                pluralize_pl(sum_counter['count'], u"kopię,kopii,kopie")
+        "the_count": u"(%s %s)" % (
+                intcomma(sum_counter['count']),
+                pluralize_pl(sum_counter['count'], u"kopia,kopii,kopie")
             ),
         "the_money": money(sum_counter['money']),
     }

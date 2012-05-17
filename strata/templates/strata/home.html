@@ -1,5 +1,5 @@
 {% extends "site_base.html" %}
-{% load static %}
+{% load humanize static %}
 {% load url from future %}
 {% load pluralize_pl %}
 {% load honeypot %}
@@ -31,7 +31,7 @@ a strata Kazika szybko osiągnie takie rozmiary, że po podziale
 
 <p id="the_counter">wynosi obecnie:
 <span id="the_money">{{ sum_counter.money|money }}</span>
-<span id="the_count">({{ sum_counter.count }} {{ sum_counter.count|pluralize_pl:"kopię,kopii,kopie" }})</span>
+<span id="the_count">({{ sum_counter.count|intcomma }} {{ sum_counter.count|pluralize_pl:"kopia,kopii,kopie" }})</span>
 </p>
 
 
@@ -53,10 +53,7 @@ a strata Kazika szybko osiągnie takie rozmiary, że po podziale
     <h2>Ostatnio doliczone</h2>
     <ul class="blinken">
     {% for inc in last_incs %}
-        <li>{% inc_form inc.counter %}
-            <span class="comment">{{ inc.money }} zł, {{ inc.date }}</span>
-            
-        </li>
+        <li>{% counterinc_item inc %}</li>
     {% endfor %}
     </ul>
     </div>
@@ -65,11 +62,7 @@ a strata Kazika szybko osiągnie takie rozmiary, że po podziale
     <h2>Najwyższe straty</h2>
     <ul class="blinken">
     {% for counter in popular_counters %}
-        <li>{% inc_form counter %}
-            <span class="comment">
-            {{ counter.count }} {{ counter.count|pluralize_pl:"kopia,kopii,kopie" }},
-            {{ counter.money }} zł</span>
-        </li>
+        <li>{% counter_item counter %}</li>
     {% endfor %}
     </ul>
     </div>

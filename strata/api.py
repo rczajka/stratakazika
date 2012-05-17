@@ -29,7 +29,8 @@ def inc_counter(counter, log=True):
     counter.money += price
     counter.save()
     if log:
-        counter.counterinc_set.create(money=price)
+        counter.counterinc_set.create(money=price,
+                total_count = counter.count, total_money = counter.money)
 
 
 def last_incs(limit=settings.LAST_INCS):

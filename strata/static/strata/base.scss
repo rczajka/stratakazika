@@ -194,6 +194,9 @@ margin: 2.5em 0;
 #popular-counters {
     width: 19em;
     float:left;
+    .blinken li {
+        margin-bottom: 1.5em;
+    }
 }
 
 .share {
