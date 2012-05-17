@@ -28,9 +28,9 @@ a strata Kazika szybko osiągnie takie rozmiary, że po podziale
 
 <h1>Strata Kazika</h1>
 
-<p class="the_counter">wynosi obecnie:
-<span class="the_money">{{ sum_counter.money }} zł</span>
-<span class="the_count">({{ sum_counter.count }} {{ sum_counter.count|pluralize_pl:"kopię,kopii,kopie" }})</span>
+<p id="the_counter">wynosi obecnie:
+<span id="the_money">{{ sum_counter.money }} zł</span>
+<span id="the_count">({{ sum_counter.count }} {{ sum_counter.count|pluralize_pl:"kopię,kopii,kopie" }})</span>
 </p>
 
 
@@ -40,7 +40,7 @@ a strata Kazika szybko osiągnie takie rozmiary, że po podziale
     <h2>Dołóż się do straty!</h2>
     <p>Wykonaj kopię płyty, którą akurat masz pod ręką i dolicz ją
     do strat artystów – a na koniec podziel się tą wiadomością ze znajomymi.</p>
-    <form class="search increase" method='post' action="{% url 'increase' %}">
+    <form class="search increase" method='post' action="{% url 'strata_increase' %}">
         {% csrf_token %}
         {% render_honeypot_field %}
         <input id="search" type="text" placeholder="Wykonawca – Tytuł płyty" name="counter_name" />

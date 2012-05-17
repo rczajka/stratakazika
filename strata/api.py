@@ -1,10 +1,14 @@
 from django.conf import settings
 from django.db.models import Sum
 from strata.models import Counter, CounterInc
+from strata.search import word_starts_with
 
 
-def search_counter(name):
-    pass
+def search_counter(prefix):
+    # Prefix must have at least 2 characters
+    if len(prefix) < 1:
+        return []
+    return Counter.objects.filter(word_starts_with('name', prefix))
 
 
 def counter_by_name(name):
@@ -38,9 +42,7 @@ def popular_counters(limit=settings.POPULAR_COUNTERS):
 
 
 def sum_counter():
-    #counter, created = Counter.objects.get_or_create(name=settings.THE_COUNTER)
     return Counter.objects.all().aggregate(count=Sum('count'), money=Sum('money'))
-    #return counter
 
 
 def the_counter():

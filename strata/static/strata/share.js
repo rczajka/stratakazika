@@ -1,11 +1,23 @@
 $(function() {
-    // TODO: update every 10 secs and after submit
+    var update_counts_from_text = function(text) {
+        var count = $.parseJSON(text);
+        $("#the_count").html(count['the_count']);
+        $("#the_money").html(count['the_money']);
+    };
+    
+    var update_counts = function() {
+        $.ajax('/update', {
+            dataType: 'text',
+            success: update_counts_from_text
+        });
+    };
 
-    // spinner after click
+    window.setInterval(update_counts, 10000);
+
+    // TODO: spinner after click
     var base_url = 'http://stratakazika.pl/';
     $('.increase').submit(function() {
         var name = this.counter_name.value;
-        alert(name);
         var here_url = base_url + '?i=' + encodeURIComponent(name);
         base_url = encodeURIComponent(base_url);
         here_url = encodeURIComponent(here_url);
@@ -15,10 +27,13 @@ $(function() {
         var description = encodeURIComponent(description);
 
         var $form = $(this);
+        $('.share', $form).remove();
         var $button = $('button', this);
+        $button.html("...");
         $(this).ajaxSubmit({
-            success: function() {
-                $button.html('Dzięki!');
+            dataType: 'text',
+            success: function(text) {
+                update_counts_from_text(text);
                 var $share = $('#share-stub').clone();
                 $share.removeAttr('id');
 
@@ -37,11 +52,17 @@ $(function() {
                 $('.nk', $share).attr('href',
                     'http://nk.pl/#sledzik?shout=' + blip);
 
-                $('.share', $form).remove();
                 $form.append($share);
                 $share.show('fast');
+                $button.html('Ja też!');
             }
         }); 
         return false;
     });
+
+    $("#search").autocomplete({
+        source: '/hint',
+        minLength: 1,
+    });
+
 });

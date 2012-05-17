@@ -1,7 +1,7 @@
 {% load url from future %}
 {% load honeypot %}
 
-<form class="increase" method='post' action="{% url 'increase' %}">
+<form class="increase" method='post' action="{% url 'strata_increase' %}">
     {% csrf_token %}
     {% render_honeypot_field %}
     {{ prefix }}

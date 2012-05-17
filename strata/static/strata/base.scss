@@ -163,7 +163,7 @@ margin: 2.5em 0;
 }
 
 
-.the_money {
+#the_money {
     display: inline-block;
     font-size: 3em;
     color: $strong;
@@ -172,7 +172,7 @@ margin: 2.5em 0;
     vertical-align: -10%;
     
 }
-.the_count {
+#the_count {
     margin-left: 1em;
     font-size: 1.5em;
 }
@@ -193,4 +193,7 @@ margin: 2.5em 0;
 .share {
     position: absolute;
     margin-left: .3em;
+    background: $verylight;
+    padding: .5em;
+    border-radius: .3em;
 }
