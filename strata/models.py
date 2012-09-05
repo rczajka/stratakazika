@@ -6,6 +6,7 @@ class Counter(models.Model):
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     count = models.IntegerField(default=0, db_index=True)
     money = models.DecimalField(max_digits=32, decimal_places=2, default=0, db_index=True)
+    hidden = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         ordering = ['name']

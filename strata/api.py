@@ -6,10 +6,9 @@ from strata.search import word_starts_with
 
 
 def search_counter(prefix):
-    # Prefix must have at least 2 characters
     if len(prefix) < 1:
         return []
-    return Counter.objects.filter(word_starts_with('name', prefix)).exclude(name__iregex=settings.COUNTER_BLACKREGEX)
+    return Counter.objects.filter(word_starts_with('name', prefix), hidden=False)
 
 
 def counter_by_name(name):
@@ -37,13 +36,11 @@ def inc_counter(counter, log=True):
 
 
 def last_incs(limit=settings.LAST_INCS):
-    return CounterInc.objects.exclude(counter__name__iregex=settings.COUNTER_BLACKREGEX).order_by('-date')[:limit]
-    #return CounterInc.objects.all().order_by('-date')[:limit]
+    return CounterInc.objects.filter(counter__hidden=False).order_by('-date')[:limit]
 
 
 def popular_counters(limit=settings.POPULAR_COUNTERS):
-    return Counter.objects.exclude(name__iregex=settings.COUNTER_BLACKREGEX).order_by('-money')[:limit]
-    #return Counter.objects.all().order_by('-money')[:limit]
+    return Counter.objects.filter(hidden=False).order_by('-money')[:limit]
 
 
 def sum_counter():

@@ -6,3 +6,4 @@ django-celery
 kombu
 piwik
 django-honeypot
+redis
