@@ -6,13 +6,13 @@ $(function() {
     };
     
     var update_counts = function() {
-        $.ajax('/update', {
+        $.ajax('http://up1.stratakazika.pl/fetch', {
             dataType: 'text',
             success: update_counts_from_text
         });
     };
 
-    window.setInterval(update_counts, 10000);
+    window.setInterval(update_counts, 60000);
 
     // TODO: spinner after click
     var base_url = 'http://stratakazika.pl/';
@@ -34,7 +34,7 @@ $(function() {
         $(this).ajaxSubmit({
             dataType: 'text',
             success: function(text) {
-                update_counts_from_text(text);
+                //update_counts_from_text(text);
                 var $share = $('#share-stub').clone();
                 $share.removeAttr('id');
                 $share.addClass('share');
@@ -59,6 +59,9 @@ $(function() {
                 $button.html('Ja też!');
             }
         }); 
+        if ($form.hasClass('search')) {
+            $('#search').val('');
+        }
         return false;
     });
 

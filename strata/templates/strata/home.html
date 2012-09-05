@@ -44,7 +44,7 @@ a strata Kazika szybko osiągnie takie rozmiary, że po podziale
     <form class="search increase" method='post' action="{% url 'strata_increase' %}">
         {% csrf_token %}
         {% render_honeypot_field %}
-        <input id="search" type="text" placeholder="Wykonawca – Tytuł płyty" name="counter_name" />
+        <input id="search" type="text" placeholder="Wykonawca – Płyta (dowolna)" name="counter_name" />
         <button>Dolicz stratę</button>
     </form>
     </div>
@@ -74,7 +74,7 @@ a strata Kazika szybko osiągnie takie rozmiary, że po podziale
 <p>Za każdym razem, kiedy kopiujesz płytę swojego ulubionego artysty,
 pozbawiasz go części należnego mu dochodu. Wielkość tej straty można
 łatwo określić, mnożąc liczbę wykonanych kopii przez cenę detaliczną płyty.
-Nasz sprytny plan polega na automatycznym robieniu kolejnych kopii albumu „Hurra”.
+Nasz sprytny plan polega na <strong>automatycznym robieniu kolejnych kopii</strong> albumu „Hurra”.
 <img id="taping" src="/static/strata/taping.png" alt="Logo kampanii „Home taping is killing music and it's illegal”">
 Kiedy kończy nam się miejsce na dysku,
 po prostu usuwamy stare kopie, by zrobić miejsce na następne.</p>
@@ -83,7 +83,8 @@ po prostu usuwamy stare kopie, by zrobić miejsce na następne.</p>
 Wystarczy, że będziemy w kółko kopiować muzykę (w tym przypadku płytę
 „Hurra” Kultu – {{ the_counter.price }}&nbsp;zł za sztukę w sklepie SP Records),
 a <strong>strata Kazika</strong> szybko osiągnie takie rozmiary, że po podziale
-łupu wszyscy zostaniemy bogaczami.</p>
+łupu wszyscy zostaniemy bogaczami. Nie wiemy, niestety, co się stanie ze światem
+w <em>momencie Kazika</em> – chwili, kiedy Strata Kazika przekroczy PKB Ziemi.</p>
 
 <p>Na wypadek, gdyby ktoś pytał: wykonanych przez nas kopii nie udostępniamy
 w internecie, bo za bardzo boimy się wizyty policji. Jesteśmy pazerni, ale nie odważni.</p>

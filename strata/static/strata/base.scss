@@ -138,6 +138,7 @@ margin: 2.5em 0;
     input {
         border:  1px solid $light;
         border-radius: .3em;
+        width: 16em;
     }
     input, button {
         font-size: 1.5em;
@@ -151,7 +152,7 @@ margin: 2.5em 0;
   min-width: 50%;
   max-width: 40em;
   float:left;
-  margin: 0 .5em;
+  margin: 0 ;
 }
 #right-column {
   float: right;
@@ -174,7 +175,7 @@ margin: 2.5em 0;
     font-size: 3em;
     color: $strong;
     text-shadow: 0 0 .25em #faa;
-    margin-left: .5em;
+    margin-left: .3em;
     vertical-align: -10%;
     
 }
